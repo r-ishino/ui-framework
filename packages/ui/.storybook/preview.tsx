@@ -10,6 +10,7 @@ const preview: Preview = {
     },
     actions: { argTypesRegex: '^on[A-Z].*' },
   },
+  tags: ['autodocs'],
 };
 
 export default preview;
