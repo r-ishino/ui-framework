@@ -3,12 +3,7 @@ import wyw from '@wyw-in-js/vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-links',
-    '@storybook/addon-a11y',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-a11y'],
   framework: {
     name: '@storybook/react-vite',
     options: {},

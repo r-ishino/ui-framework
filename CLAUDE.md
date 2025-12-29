@@ -225,7 +225,7 @@ pnpm --filter @sample/ui type-check
 
 ### Storybook起動エラー
 - Node.jsバージョンを確認 (22.21.1)
-- Storybookのバージョンを確認 (8.6.15で統一)
+- Storybookのバージョンを確認 (10.1.10で統一)
 - peer dependencyの警告は無視してOK（React 19使用のため）
 
 ### デモアプリ起動エラー
@@ -245,14 +245,15 @@ pnpm --filter @sample/ui type-check
 
 1. **Node.jsバージョン**: 必ず22.21.1を使用（`.node-version`で管理）
 2. **パッケージマネージャー**: pnpmのみ使用（npmやyarnは使用しない）
-3. **Storybookバージョン**: 全パッケージ8.6.15で統一（10系はアドオン未対応）
+3. **Storybookバージョン**: 全パッケージ10.1.10で統一（ESM-onlyのため、設定はESM形式で記述）
 4. **React 19**: 一部ライブラリがpeer dependencyで警告を出すが動作に問題なし
 5. **ビルド順序**: Turboが依存関係を解決するため、個別パッケージのビルド順序を気にする必要なし
 
 ## 最終更新
 
 - 2025-12-29: 初版作成
+- 2025-12-29: Storybook 10.1.10へアップデート
 - Node.js: 22.21.1
 - React: 19.2.3
 - Next.js: 16.1.1
-- Storybook: 8.6.15
+- Storybook: 10.1.10
