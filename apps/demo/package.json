@@ -1,0 +1,30 @@
+{
+  "name": "sample-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demo application for @sample packages",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next"
+  },
+  "dependencies": {
+    "@sample/nextjs": "workspace:*",
+    "@sample/ui": "workspace:*",
+    "@sample/util": "workspace:*",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint-config-next": "^16.1.1",
+    "typescript": "^5.3.3"
+  }
+}
