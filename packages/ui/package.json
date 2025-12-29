@@ -28,7 +28,10 @@
     "clean": "rm -rf dist storybook-static"
   },
   "dependencies": {
-    "@sample/util": "workspace:*"
+    "@linaria/core": "^6.3.0",
+    "@linaria/react": "^6.3.0",
+    "@sample/util": "workspace:*",
+    "linaria": "^6.3.0"
   },
   "peerDependencies": {
     "react": "^18.0.0",

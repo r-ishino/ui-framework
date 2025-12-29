@@ -5,4 +5,6 @@
 
 export const version = '0.1.0';
 
-// TODO: Export components here
+// Buttons
+export { Button } from './buttons/Button/Button';
+export type { ButtonProps } from './buttons/Button/Button';
