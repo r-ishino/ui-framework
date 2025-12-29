@@ -180,7 +180,7 @@ Releases are automated:
 ## Questions?
 
 If you have questions, please:
-- Check the [documentation](./sample-docs)
+- Check the [documentation](./docs)
 - Open an [issue](https://github.com/YOUR-ORG/ui-framework/issues)
 - Ask in pull request comments
 

@@ -33,7 +33,7 @@ Sampleは、社内Reactアプリケーションで共通利用されるUIコン�
 - **依存**: Next.js, @sample/ui, @sample/nextjs, @sample/util
 - **用途**: 開発中の動作確認、統合テスト
 
-### `sample-docs`
+### `docs`
 - **目的**: プロジェクト全体のドキュメント
 - **内容**: 設計ドキュメント、ガイドライン、タスクリスト
 
@@ -105,7 +105,7 @@ ui-framework/
 │       ├── src/
 │       ├── package.json
 │       └── tsconfig.json
-├── sample-docs/               # ドキュメント
+├── docs/                      # ドキュメント
 ├── .github/
 │   └── workflows/             # CI/CD設定
 ├── package.json               # ルートワークスペース

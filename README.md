@@ -50,12 +50,12 @@ pnpm dev
 
 ## 📚 Documentation
 
-See [sample-docs](./sample-docs) for detailed documentation:
+See [docs](./docs) for detailed documentation:
 
-- [Overview](./sample-docs/00-overview.md) - Project overview and architecture
-- [Tasks](./sample-docs/01-tasks.md) - Implementation tasks and roadmap
-- [Release Strategy](./sample-docs/02-release-strategy.md) - Release management with Changesets
-- [pnpm vs Turbo](./sample-docs/03-pnpm-vs-turbo.md) - Tool comparison and usage
+- [Overview](./docs/00-overview.md) - Project overview and architecture
+- [Tasks](./docs/01-tasks.md) - Implementation tasks and roadmap
+- [Release Strategy](./docs/02-release-strategy.md) - Release management with Changesets
+- [pnpm vs Turbo](./docs/03-pnpm-vs-turbo.md) - Tool comparison and usage
 
 ## 🔧 Tech Stack
 
@@ -140,7 +140,7 @@ Releases are automated via Changesets:
 │   ├── ui/                # UI components
 │   ├── nextjs/            # Next.js utilities
 │   └── util/              # Utility functions
-├── sample-docs/           # Documentation
+├── docs/                  # Documentation
 ├── .changeset/            # Changesets configuration
 ├── turbo.json             # Turbo configuration
 ├── pnpm-workspace.yaml    # pnpm workspace configuration
