@@ -1,12 +1,11 @@
 import { css, cx } from '@linaria/core';
-import { styled } from '@linaria/react';
-import type { ComponentProps, ReactNode } from 'react';
+import type { ComponentProps, ReactElement, ReactNode } from 'react';
 
-export interface ButtonProps extends ComponentProps<'button'> {
+export type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
-}
+} & ComponentProps<'button'>;
 
 const baseButton = css`
   display: inline-flex;
@@ -95,19 +94,17 @@ const sizeStyles = {
   lg: largeSize,
 };
 
-export function Button({
+export const Button = ({
   variant = 'primary',
   size = 'md',
   children,
   className,
   ...props
-}: ButtonProps) {
-  return (
+}: ButtonProps): ReactElement => (
     <button
       className={cx(baseButton, variantStyles[variant], sizeStyles[size], className)}
       {...props}
     >
       {children}
     </button>
-  );
-}
+  )

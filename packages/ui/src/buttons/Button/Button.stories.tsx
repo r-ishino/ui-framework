@@ -84,6 +84,9 @@ export const Disabled: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {
+    children: 'Button',
+  },
   render: () => (
     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
       <Button variant="primary">Primary</Button>
@@ -94,6 +97,9 @@ export const AllVariants: Story = {
 };
 
 export const AllSizes: Story = {
+  args: {
+    children: 'Button',
+  },
   render: () => (
     <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
       <Button size="sm">Small</Button>
