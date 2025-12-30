@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import wyw from '@wyw-in-js/vite';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
@@ -16,7 +15,6 @@ export default defineConfig({
         ],
       },
     }),
-    react(),
     dts({
       insertTypesEntry: true,
       exclude: ['**/*.stories.tsx', '**/*.test.tsx'],
@@ -30,7 +28,13 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'js'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', '@linaria/core', '@linaria/react'],
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        '@linaria/core',
+        '@linaria/react',
+      ],
       output: {
         globals: {
           react: 'React',

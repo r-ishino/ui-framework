@@ -115,6 +115,31 @@ pnpm --filter sample-demo dev
 # または手動で: pkill -f "pnpm.*dev"
 ```
 
+### 重要: 開発サーバー終了の徹底
+
+**開発サーバー（`pnpm dev`、Storybookなど）を起動した場合、タスク完了時に必ずプロセスを停止してください。**
+
+プロセスが残ったままだと、次回起動時にポート（3000、6006など）が塞がっておりエラーになります。
+
+```bash
+# 開発サーバー停止の確認
+ps aux | grep -E "pnpm.*dev|next.*dev|storybook" | grep -v grep
+
+# プロセスが残っている場合は停止
+pkill -f "pnpm.*dev"
+pkill -f "storybook"
+
+# または個別にkill
+kill <PID>
+```
+
+**Claude Codeでの推奨フロー:**
+
+1. 開発サーバー起動前に、既存プロセスがないか確認
+2. `run_in_background: true` で起動
+3. 確認・テストが終わったら、**必ずKillShellツールまたはpkillでプロセス停止**
+4. 停止を確認してからタスクを終了
+
 ## Node.jsバージョン
 
 ```bash
@@ -232,6 +257,22 @@ pnpm --filter @sample/ui type-check
 - `pnpm build`で全パッケージをビルド済みか確認
 - Next.js設定の`eslint`警告は無視してOK（非推奨設定だが動作に影響なし）
 
+### ポート競合エラー（EADDRINUSE）
+開発サーバー起動時に「Port 3000 is already in use」などのエラーが出る場合：
+
+```bash
+# 実行中のプロセスを確認
+ps aux | grep -E "pnpm.*dev|next.*dev|storybook" | grep -v grep
+
+# プロセスを停止
+pkill -f "pnpm.*dev"
+pkill -f "storybook"
+
+# または特定のポートを使用しているプロセスを確認・停止
+lsof -i :3000  # ポート3000を使用中のプロセス確認
+kill -9 <PID>  # PIDを指定して強制終了
+```
+
 ## 参考ドキュメント
 
 - [README.md](./README.md) - プロジェクト概要
@@ -248,11 +289,13 @@ pnpm --filter @sample/ui type-check
 3. **Storybookバージョン**: 全パッケージ10.1.10で統一（ESM-onlyのため、設定はESM形式で記述）
 4. **React 19**: 一部ライブラリがpeer dependencyで警告を出すが動作に問題なし
 5. **ビルド順序**: Turboが依存関係を解決するため、個別パッケージのビルド順序を気にする必要なし
+6. **開発サーバーの停止**: `pnpm dev`やStorybookなどの開発サーバーを起動した場合、タスク完了時に必ずプロセスを停止すること（ポート競合を防ぐため）
 
 ## 最終更新
 
 - 2025-12-29: 初版作成
 - 2025-12-29: Storybook 10.1.10へアップデート
+- 2025-12-31: 開発サーバー停止に関する注意事項を追加
 - Node.js: 22.21.1
 - React: 19.2.3
 - Next.js: 16.1.1

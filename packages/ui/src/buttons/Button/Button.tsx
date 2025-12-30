@@ -101,10 +101,15 @@ export const Button = ({
   className,
   ...props
 }: ButtonProps): ReactElement => (
-    <button
-      className={cx(baseButton, variantStyles[variant], sizeStyles[size], className)}
-      {...props}
-    >
-      {children}
-    </button>
-  )
+  <button
+    className={cx(
+      baseButton,
+      variantStyles[variant],
+      sizeStyles[size],
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </button>
+);
