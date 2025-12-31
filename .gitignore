@@ -10,6 +10,9 @@ out/
 .next/
 *.tsbuildinfo
 
+# Next.js
+next-env.d.ts
+
 # Testing
 coverage/
 .nyc_output/
