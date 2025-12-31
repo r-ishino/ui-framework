@@ -40,7 +40,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: input,
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     rollupOptions: {
       external: [
@@ -50,63 +50,31 @@ export default defineConfig({
         '@linaria/core',
         '@linaria/react',
       ],
-      output: [
-        {
-          format: 'es',
-          preserveModules: true,
-          preserveModulesRoot: 'src',
-          entryFileNames: '[name].mjs',
-          chunkFileNames: '[name].mjs',
-          banner: (chunk) => {
-            // ソースファイルに 'use client' が含まれているかチェック
-            if (chunk.facadeModuleId) {
-              try {
-                const content = readFileSync(chunk.facadeModuleId, 'utf-8');
-                if (content.includes("'use client'") || content.includes('"use client"')) {
-                  return "'use client';";
-                }
-              } catch (e) {
-                // ファイル読み込みエラーは無視
+      output: {
+        format: 'es',
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+        banner: (chunk) => {
+          // ソースファイルに 'use client' が含まれているかチェック
+          if (chunk.facadeModuleId) {
+            try {
+              const content = readFileSync(chunk.facadeModuleId, 'utf-8');
+              if (content.includes("'use client'") || content.includes('"use client"')) {
+                return "'use client';";
               }
+            } catch (e) {
+              // ファイル読み込みエラーは無視
             }
-            return '';
-          },
-          assetFileNames: (assetInfo) => {
-            if (assetInfo.name?.endsWith('.css')) return 'index.css';
-            return assetInfo.name || 'assets/[name].[ext]';
-          },
+          }
+          return '';
         },
-        {
-          format: 'cjs',
-          preserveModules: true,
-          preserveModulesRoot: 'src',
-          entryFileNames: '[name].js',
-          chunkFileNames: '[name].js',
-          exports: 'named',
-          banner: (chunk) => {
-            // ソースファイルに 'use client' が含まれているかチェック
-            if (chunk.facadeModuleId) {
-              try {
-                const content = readFileSync(chunk.facadeModuleId, 'utf-8');
-                if (content.includes("'use client'") || content.includes('"use client"')) {
-                  return "'use client';";
-                }
-              } catch (e) {
-                // ファイル読み込みエラーは無視
-              }
-            }
-            return '';
-          },
-          globals: {
-            react: 'React',
-            'react-dom': 'ReactDOM',
-          },
-          assetFileNames: (assetInfo) => {
-            if (assetInfo.name?.endsWith('.css')) return 'index.css';
-            return assetInfo.name || 'assets/[name].[ext]';
-          },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) return 'index.css';
+          return assetInfo.name || 'assets/[name].[ext]';
         },
-      ],
+      },
     },
     sourcemap: true,
     cssCodeSplit: false,

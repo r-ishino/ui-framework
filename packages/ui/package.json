@@ -2,14 +2,13 @@
   "name": "@sample/ui",
   "version": "0.1.0",
   "description": "Reusable React UI components",
+  "type": "module",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "default": "./dist/index.js"
     },
     "./styles.css": "./dist/index.css"
   },
@@ -23,7 +22,7 @@
     "test:watch": "vitest",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "type-check": "tsc --noEmit",
+    "tsc": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "clean": "rm -rf dist storybook-static"

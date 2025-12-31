@@ -2,14 +2,13 @@
   "name": "@sample/util",
   "version": "0.1.0",
   "description": "Framework-agnostic utility functions",
+  "type": "module",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "default": "./dist/index.js"
     }
   },
   "files": [
@@ -22,7 +21,7 @@
     "test:watch": "vitest",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "type-check": "tsc --noEmit",
+    "tsc": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "devDependencies": {

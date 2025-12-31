@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "type-check": "tsc --noEmit",
+    "tsc": "tsc --noEmit",
     "clean": "rm -rf .next"
   },
   "dependencies": {
