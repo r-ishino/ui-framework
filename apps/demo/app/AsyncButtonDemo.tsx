@@ -34,10 +34,10 @@ export const AsyncButtonDemo = (): ReactElement => {
           flexWrap: 'wrap',
         }}
       >
-        <Button variant="primary" onClick={handleAsyncClick}>
+        <Button onClick={handleAsyncClick} variant="primary">
           Async Button (2s delay)
         </Button>
-        <Button variant="secondary" onClick={handleSyncClick}>
+        <Button onClick={handleSyncClick} variant="secondary">
           Sync Button
         </Button>
       </div>

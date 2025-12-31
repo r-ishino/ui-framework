@@ -46,6 +46,13 @@ export default [
         document: 'readonly',
         navigator: 'readonly',
         console: 'readonly',
+        // Timer functions (browser & Node.js)
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        setImmediate: 'readonly',
+        clearImmediate: 'readonly',
         // Node globals
         process: 'readonly',
         __dirname: 'readonly',

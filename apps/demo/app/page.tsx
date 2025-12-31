@@ -28,13 +28,13 @@ const Home = (): ReactElement => (
           flexWrap: 'wrap',
         }}
       >
-        <Button variant="primary" size="md">
+        <Button size="md" variant="primary">
           Primary Button
         </Button>
-        <Button variant="secondary" size="md">
+        <Button size="md" variant="secondary">
           Secondary Button
         </Button>
-        <Button variant="outline" size="md">
+        <Button size="md" variant="outline">
           Outline Button
         </Button>
       </div>
@@ -47,19 +47,19 @@ const Home = (): ReactElement => (
           alignItems: 'center',
         }}
       >
-        <Button variant="primary" size="sm">
+        <Button size="sm" variant="primary">
           Small
         </Button>
-        <Button variant="primary" size="md">
+        <Button size="md" variant="primary">
           Medium
         </Button>
-        <Button variant="primary" size="lg">
+        <Button size="lg" variant="primary">
           Large
         </Button>
       </div>
 
       <div style={{ marginTop: '1rem' }}>
-        <Button variant="primary" disabled>
+        <Button disabled variant="primary">
           Disabled Button
         </Button>
       </div>
