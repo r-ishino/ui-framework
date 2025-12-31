@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { Button, version as uiVersion } from '@sample/ui';
 import { version as nextjsVersion } from '@sample/nextjs';
-import { version as utilVersion } from '@sample/util';
+import { version as utilVersion, isBlank, isObject } from '@sample/util';
 
 const Home = (): ReactElement => (
   <main style={{ padding: '2rem' }}>
@@ -61,6 +61,34 @@ const Home = (): ReactElement => (
         <Button variant="primary" disabled>
           Disabled Button
         </Button>
+      </div>
+    </section>
+
+    <section style={{ marginTop: '2rem' }}>
+      <h2>Helper Utilities Demo</h2>
+      <div style={{ marginTop: '1rem' }}>
+        <h3>isBlank()</h3>
+        <ul>
+          <li>isBlank(null): {String(isBlank(null))}</li>
+          <li>isBlank(undefined): {String(isBlank(undefined))}</li>
+          <li>isBlank(&quot;&quot;): {String(isBlank(''))}</li>
+          <li>isBlank([]): {String(isBlank([]))}</li>
+          <li>isBlank(&#123;&#125;): {String(isBlank({}))}</li>
+          <li>isBlank(false): {String(isBlank(false))}</li>
+          <li>isBlank(&quot;hello&quot;): {String(isBlank('hello'))}</li>
+          <li>isBlank([1, 2, 3]): {String(isBlank([1, 2, 3]))}</li>
+        </ul>
+      </div>
+      <div style={{ marginTop: '1rem' }}>
+        <h3>isObject()</h3>
+        <ul>
+          <li>isObject(&#123;&#125;): {String(isObject({}))}</li>
+          <li>isObject(&#123; key: &quot;value&quot; &#125;): {String(isObject({ key: 'value' }))}</li>
+          <li>isObject([]): {String(isObject([]))}</li>
+          <li>isObject(null): {String(isObject(null))}</li>
+          <li>isObject(&quot;string&quot;): {String(isObject('string'))}</li>
+          <li>isObject(123): {String(isObject(123))}</li>
+        </ul>
       </div>
     </section>
 

@@ -2,7 +2,7 @@ import type { StorybookConfig } from '@storybook/react-vite';
 import wyw from '@wyw-in-js/vite';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(ts|tsx)', '../src/**/*.mdx'],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-links',
