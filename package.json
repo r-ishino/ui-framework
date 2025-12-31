@@ -39,5 +39,10 @@
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@wyw-in-js/processor-utils": "0.8.1"
+    }
   }
 }

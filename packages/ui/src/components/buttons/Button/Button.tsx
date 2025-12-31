@@ -1,10 +1,17 @@
 import { css, cx } from '@linaria/core';
-import type { ComponentProps, ReactElement, ReactNode } from 'react';
+import { useState } from 'react';
+import type {
+  ComponentProps,
+  MouseEvent,
+  ReactElement,
+  ReactNode,
+} from 'react';
 
 export type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
 } & ComponentProps<'button'>;
 
 const baseButton = css`
@@ -99,17 +106,33 @@ export const Button = ({
   size = 'md',
   children,
   className,
+  disabled,
+  onClick: _onClick,
   ...props
-}: ButtonProps): ReactElement => (
-  <button
-    className={cx(
-      baseButton,
-      variantStyles[variant],
-      sizeStyles[size],
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </button>
-);
+}: ButtonProps): ReactElement => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onClick = async (
+    event: MouseEvent<HTMLButtonElement>
+  ): Promise<void> => {
+    setIsLoading(true);
+    await _onClick?.(event);
+    setIsLoading(false);
+  };
+
+  return (
+    <button
+      className={cx(
+        baseButton,
+        variantStyles[variant],
+        sizeStyles[size],
+        className
+      )}
+      disabled={disabled || isLoading}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};

@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { Button, version as uiVersion } from '@sample/ui';
 import { version as nextjsVersion } from '@sample/nextjs';
 import { version as utilVersion, isBlank, isObject } from '@sample/util';
+import { AsyncButtonDemo } from './AsyncButtonDemo';
 
 const Home = (): ReactElement => (
   <main style={{ padding: '2rem' }}>
@@ -63,6 +64,8 @@ const Home = (): ReactElement => (
         </Button>
       </div>
     </section>
+
+    <AsyncButtonDemo />
 
     <section style={{ marginTop: '2rem' }}>
       <h2>Helper Utilities Demo</h2>
