@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { Button, version as uiVersion } from '@sample/ui';
+import { Badge, Button, version as uiVersion } from '@sample/ui';
 import { version as nextjsVersion } from '@sample/nextjs';
 import { version as utilVersion, isBlank, isObject } from '@sample/util';
 import { AsyncButtonDemo } from './AsyncButtonDemo';
@@ -63,6 +63,7 @@ const Home = (): ReactElement => (
           Disabled Button
         </Button>
       </div>
+      <Badge>Badge</Badge>
     </section>
 
     <AsyncButtonDemo />
@@ -85,8 +86,6 @@ const Home = (): ReactElement => (
       <div style={{ marginTop: '1rem' }}>
         <h3>isObject()</h3>
         <ul>
-          <li>isObject(&#123;&#125;): {String(isObject({}))}</li>
-          <li>isObject(&#123; key: &quot;value&quot; &#125;): {String(isObject({ key: 'value' }))}</li>
           <li>isObject([]): {String(isObject([]))}</li>
           <li>isObject(null): {String(isObject(null))}</li>
           <li>isObject(&quot;string&quot;): {String(isObject('string'))}</li>

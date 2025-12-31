@@ -1,3 +1,5 @@
+'use client';
+
 import { css, cx } from '@linaria/core';
 import { useState } from 'react';
 import type {
