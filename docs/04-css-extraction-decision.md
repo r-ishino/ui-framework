@@ -131,6 +131,7 @@ Next.jsアプリ (消費側)
    - → CSS抽出アルゴリズムの違いによるクラス名の不一致
 
 3. **peerDependencies管理の負担**
+
    ```json
    {
      "peerDependencies": {

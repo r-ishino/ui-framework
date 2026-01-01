@@ -12,8 +12,8 @@
     "lint:fix": "turbo lint:fix",
     "tsc": "turbo tsc",
     "storybook": "pnpm --filter @sample/ui storybook",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yaml,yml}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yaml,yml}\"",
+    "fmt": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yaml,yml}\"",
+    "fmt:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yaml,yml}\"",
     "clean": "turbo clean && rm -rf node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
@@ -36,10 +36,10 @@
     "turbo": "^2.7.2",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@8.15.3",
+  "packageManager": "pnpm@9.4.0",
   "engines": {
     "node": ">=18.0.0",
-    "pnpm": ">=8.0.0"
+    "pnpm": ">=9.0.0"
   },
   "pnpm": {
     "overrides": {

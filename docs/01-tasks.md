@@ -37,7 +37,7 @@
     - [x] tsconfig.json
     - [x] src/index.ts
     - [x] vitest.config.ts
-    - [ ] .storybook/ (パッケージはインストール済みだが設定未作成)
+    - [x] .storybook/ (設定完了: main.ts, preview.tsx)
   - [x] `packages/nextjs/`
     - [x] package.json
     - [x] tsconfig.json
@@ -71,21 +71,23 @@
   - [x] ルートレベルのVitest設定（各パッケージに設定済み）
   - [x] React Testing Libraryの導入
   - [x] カバレッジ設定
-  - [ ] テストユーティリティの作成
+  - [x] テストの作成（コンポーネント、トークン、ユーティリティ）
 
-- [ ] Storybookの設定（@sample/uiのみ）
-  - [x] Storybook 8の導入（8.6.15）
-  - [ ] linariaとの統合（設定ファイル未作成）
-  - [x] アドオンの設定（a11y, controls等 - package.jsonに記載）
+- [x] Storybookの設定（@sample/uiのみ）
+  - [x] Storybook 10の導入（10.1.10）
+  - [x] linariaとの統合
+  - [x] アドオンの設定（a11y, controls等）
+  - [x] 各コンポーネントのStory作成
 
 ## フェーズ2: CI/CD環境構築
 
 ### 2.1 GitHub Actions設定
 
-- [ ] `.github/workflows/ci.yml`
-  - [ ] プルリクエスト時の自動テスト
-  - [ ] Lint・型チェック
-  - [ ] ビルド確認
+- [x] `.github/workflows/ci.yml`
+  - [x] プルリクエスト時の自動テスト
+  - [x] Lint・型チェック
+  - [x] Format チェック
+  - [x] ビルド確認
   - [ ] カバレッジレポート
 
 - [ ] `.github/workflows/release.yml`
@@ -109,29 +111,36 @@
 
 ### 3.1 @sample/util
 
-- [ ] 基本的なユーティリティ関数
+- [x] 基本的なユーティリティ関数
+  - [x] バリデーション関数（isBlank, isObject）
   - [ ] 日付処理（date-fns wrapper）
-  - [ ] バリデーション関数
   - [ ] 文字列操作
-  - [ ] オブジェクト操作
-- [ ] テストの作成
-- [ ] ドキュメントの作成
+  - [ ] その他のオブジェクト操作
+- [x] テストの作成（isBlank, isObject）
+- [ ] ドキュメントの作成（README.md）
 
 ### 3.2 @sample/ui
 
-- [ ] デザイントークンの定義
-  - [ ] カラーパレット
+- [x] デザイントークンの定義
+  - [x] カラーパレット（Color）
+  - [x] スペーシング（Space）
+  - [x] 角丸（Radius）
   - [ ] タイポグラフィ
-  - [ ] スペーシング
   - [ ] ブレークポイント
 
-- [ ] 基本コンポーネント
-  - [ ] Button
+- [x] 基本コンポーネント（一部）
+  - [x] Button（テスト・Story付き）
   - [ ] Input
   - [ ] Checkbox
   - [ ] Radio
   - [ ] Select
   - [ ] Textarea
+
+- [x] ディスプレイコンポーネント（一部）
+  - [x] Badge（テスト・Story付き）
+
+- [x] テキストコンポーネント（一部）
+  - [x] Link（テスト・Story付き）
 
 - [ ] レイアウトコンポーネント
   - [ ] Box
@@ -146,14 +155,13 @@
   - [ ] Modal
   - [ ] Spinner
 
-- [ ] 各コンポーネントのStory作成
-- [ ] 各コンポーネントのテスト作成
+- [ ] ドキュメントの作成（README.md）
 
 ### 3.3 @sample/nextjs
 
-- [ ] Next.js最適化コンポーネント
+- [x] Next.js最適化コンポーネント（一部）
+  - [x] NextLink（next/link wrapper、テスト付き）
   - [ ] OptimizedImage（next/image wrapper）
-  - [ ] Link（next/link wrapper）
   - [ ] Head管理ユーティリティ
 
 - [ ] レイアウト関連
@@ -162,7 +170,7 @@
   - [ ] Footer
   - [ ] Sidebar
 
-- [ ] テスト・ドキュメント作成
+- [ ] ドキュメントの作成（README.md）
 
 ### 3.4 sample-demo
 
@@ -216,14 +224,17 @@
 
 ### 5.1 パッケージ公開準備
 
+- [x] 初期バージョン設定（v0.1.0）
 - [ ] npm organizationの設定（@sample）
-- [ ] パッケージメタデータの整備
+- [x] パッケージメタデータの整備（基本）
+  - [x] name, version, description
+  - [x] type: "module"（ESM）
   - [ ] keywords
   - [ ] repository
   - [ ] bugs
   - [ ] homepage
 
-- [ ] .npmignore / files設定
+- [x] .npmignore / files設定（tsup自動処理）
 
 ### 5.2 最終チェック
 
@@ -265,37 +276,57 @@
 
 ### 検討事項
 
-- **CSS-in-JSライブラリの選定**: linariaで確定しているが、パフォーマンステストで問題があれば再検討
-- **ライセンス**: MIT or Apache 2.0（社内ポリシーに応じて決定）
-- **バージョン管理**: Changesets vs Lerna vs 手動（チーム規模に応じて決定）
-- **デプロイ先**: npm public registry or private registry
-- **Storybook デプロイ**: GitHub Pages vs Vercel vs Chromatic
+- **CSS-in-JSライブラリ**: linariaで確定（Zero-runtime）
+- **ライセンス**: MIT（決定済み）
+- **バージョン管理**: 現在手動、Changesets導入検討中
+- **デプロイ先**: npm public registry or private registry（未決定）
+- **Storybook デプロイ**: GitHub Pages vs Vercel vs Chromatic（未決定）
 
 ### 推奨される追加ツール
 
-- **changeset**: モノレポのバージョン管理
+- **changeset**: モノレポのバージョン管理（未導入）
 - **turbo**: ビルドキャッシュと並列実行による高速化 ✅ 導入済み
-- **TypeDoc**: API仕様書の自動生成
-- **Chromatic**: Storybookの視覚的回帰テスト
-- **Renovate**: 依存関係の自動更新
+- **TypeDoc**: API仕様書の自動生成（未導入）
+- **Chromatic**: Storybookの視覚的回帰テスト（未導入）
+- **Renovate** or **Dependabot**: 依存関係の自動更新（未導入）
 
-### 現在の進捗状況（2025-12-29時点）
+### 現在の進捗状況（2026-01-02時点）
 
 #### 完了済み
 
-- ✅ フェーズ1: プロジェクト基盤構築（ほぼ完了）
-  - モノレポ環境、TypeScript、リンター・フォーマッター
-  - 全パッケージの構造とビルド環境
+- ✅ **フェーズ1: プロジェクト基盤構築（完了）**
+  - モノレポ環境（pnpm workspaces + Turbo）
+  - TypeScript環境（strict mode）
+  - リンター・フォーマッター（ESLint + Prettier）
+  - 全パッケージの構造とビルド環境（tsup）
   - テスト環境（Vitest + React Testing Library）
-  - Turboによるビルドオーケストレーション
-- ✅ フェーズ4（一部）: 基本ドキュメント整備
-  - README.md、CONTRIBUTING.md、LICENSE、CLAUDE.md
+  - Storybook 10.1.10のセットアップと統合
 
-#### 未完了（今後のタスク）
+- ✅ **フェーズ3: 初期コンポーネント実装（一部完了）**
+  - デザイントークン（Color, Space, Radius）
+  - 基本コンポーネント（Button, Badge, Link）
+  - Next.js専用コンポーネント（NextLink）
+  - ユーティリティ関数（isBlank, isObject）
+  - 各コンポーネントのテストとStory
 
-- ⏳ Storybookの設定ファイル作成（.storybook/）
-- ⏳ テストユーティリティの実装
-- ⏳ CI/CD環境構築（GitHub Actions）
-- ⏳ 初期コンポーネント実装
-- ⏳ 各パッケージのREADME作成
-- ⏳ パッケージ公開準備
+- ✅ **フェーズ4: ドキュメント整備（一部完了）**
+  - README.md、CONTRIBUTING.md、LICENSE
+  - CLAUDE.md（AI アシスタント向けリファレンス）
+
+- ✅ **フェーズ5: 公開準備（一部完了）**
+  - 初期バージョン設定（v0.1.0）
+  - 基本的なパッケージメタデータ
+
+#### 進行中・未完了（今後のタスク）
+
+- ⏳ **フェーズ2: CI/CD環境構築（一部完了）**
+  - ✅ GitHub Actions CI設定（型チェック、フォーマット、リント、テスト、ビルド）
+  - ⏳ GitHub Actions release/deploy設定
+  - ⏳ pre-commitフック（husky + lint-staged）
+  - ⏳ Changesets導入
+
+- ⏳ **フェーズ3: 公開準備**
+  - npm organization設定
+  - GitHub Packages公開設定
+  - パッケージメタデータの完成
+  - 最終チェックとリリース
