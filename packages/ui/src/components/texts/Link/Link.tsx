@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { css, cx } from '@linaria/core';
 import { color } from '../../../tokens';
@@ -64,7 +66,6 @@ export const Link: React.FC<LinkProps> = ({
   variant = 'primary',
   className,
   customLink,
-  isExternal = false,
   children,
   href,
   onClick,

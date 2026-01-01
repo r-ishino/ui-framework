@@ -12,17 +12,20 @@ Thank you for your interest in contributing to the Sample UI Framework!
 ### Getting Started
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/YOUR-ORG/ui-framework.git
    cd ui-framework
    ```
 
 2. Install dependencies
+
    ```bash
    pnpm install
    ```
 
 3. Build all packages
+
    ```bash
    pnpm build
    ```
@@ -43,6 +46,7 @@ git checkout -b fix/your-bug-fix
 ```
 
 Branch naming conventions:
+
 - `feature/*` - New features
 - `fix/*` - Bug fixes
 - `docs/*` - Documentation updates
@@ -81,6 +85,7 @@ pnpm changeset
 ```
 
 Follow the prompts to:
+
 1. Select which packages are affected
 2. Choose the version bump type (major/minor/patch)
 3. Write a clear description of the changes
@@ -93,6 +98,7 @@ git commit -m "feat: add new button variant"
 ```
 
 Commit message format:
+
 - `feat:` - New feature
 - `fix:` - Bug fix
 - `docs:` - Documentation changes
@@ -180,6 +186,7 @@ Releases are automated:
 ## Questions?
 
 If you have questions, please:
+
 - Check the [documentation](./docs)
 - Open an [issue](https://github.com/YOUR-ORG/ui-framework/issues)
 - Ask in pull request comments

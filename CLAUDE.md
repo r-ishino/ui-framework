@@ -40,12 +40,14 @@ pnpm type-check
 ### デモアプリの起動
 
 **方法1: ディレクトリ移動**
+
 ```bash
 cd apps/demo
 pnpm dev
 ```
 
 **方法2: ワークスペースフィルター（推奨）**
+
 ```bash
 pnpm --filter sample-demo dev
 ```
@@ -171,35 +173,42 @@ nodenv version
 ## 技術スタック詳細
 
 ### コア
+
 - **TypeScript**: ^5.3.3 (strict mode)
 - **React**: ^19.2.3
 - **React DOM**: ^19.2.3
 
 ### ビルド・開発ツール
+
 - **pnpm**: >=8.0.0 (パッケージマネージャー)
 - **Turbo**: ビルドオーケストレーション
 - **tsup**: TypeScriptビルドツール
 - **Vite**: ^7.3.0 (Storybook用)
 
 ### テスト
+
 - **Vitest**: ^1.3.0
 - **React Testing Library**: ^16.3.1
 - **jsdom**: ^24.0.0
 
 ### リント・フォーマット
+
 - **ESLint**: ^8.57.1
 - **Prettier**: 設定済み
 - **TypeScript ESLint**: 設定済み
 
 ### ドキュメント
+
 - **Storybook**: ^8.6.15 (@sample/uiのみ)
   - addon-a11y, addon-essentials, addon-interactions, addon-links
 
 ### Next.js (demo/nextjsパッケージ)
+
 - **Next.js**: ^16.1.1
 - **Turbopack**: デフォルト
 
 ### スタイリング
+
 - **linaria**: ^6.2.0 (@wyw-in-js/vite ^0.4.0)
   - Zero-runtime CSS-in-JS
 
@@ -219,11 +228,13 @@ Turboは以下のタスクを管理しています（`turbo.json`参照）：
 ## Git操作の注意点
 
 ### コミット時
+
 - changesetを使用してバージョン管理
 - コミットメッセージは意味のある内容に
 - テストとリントを通してからコミット
 
 ### ブランチ戦略
+
 - `main`: 安定版ブランチ
 - `feature/*`: 新機能
 - `fix/*`: バグ修正
@@ -231,6 +242,7 @@ Turboは以下のタスクを管理しています（`turbo.json`参照）：
 ## トラブルシューティング
 
 ### ビルドエラー
+
 ```bash
 # クリーンビルド
 pnpm clean
@@ -240,6 +252,7 @@ pnpm build
 ```
 
 ### 型エラー
+
 ```bash
 # 型チェック実行
 pnpm type-check
@@ -249,15 +262,18 @@ pnpm --filter @sample/ui type-check
 ```
 
 ### Storybook起動エラー
+
 - Node.jsバージョンを確認 (22.21.1)
 - Storybookのバージョンを確認 (10.1.10で統一)
 - peer dependencyの警告は無視してOK（React 19使用のため）
 
 ### デモアプリ起動エラー
+
 - `pnpm build`で全パッケージをビルド済みか確認
 - Next.js設定の`eslint`警告は無視してOK（非推奨設定だが動作に影響なし）
 
 ### ポート競合エラー（EADDRINUSE）
+
 開発サーバー起動時に「Port 3000 is already in use」などのエラーが出る場合：
 
 ```bash

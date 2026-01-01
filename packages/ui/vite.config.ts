@@ -61,7 +61,10 @@ export default defineConfig({
           if (chunk.facadeModuleId) {
             try {
               const content = readFileSync(chunk.facadeModuleId, 'utf-8');
-              if (content.includes("'use client'") || content.includes('"use client"')) {
+              if (
+                content.includes("'use client'") ||
+                content.includes('"use client"')
+              ) {
                 return "'use client';";
               }
             } catch (e) {

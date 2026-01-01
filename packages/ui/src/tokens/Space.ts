@@ -9,7 +9,7 @@ export const space = {
   m: '16px',
   l: '24px',
   xl: '32px',
-  xxl: '40px'
+  xxl: '40px',
 } as const satisfies {
   [key: string]: string;
 };

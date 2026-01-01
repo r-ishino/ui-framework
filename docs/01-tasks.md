@@ -282,6 +282,7 @@
 ### 現在の進捗状況（2025-12-29時点）
 
 #### 完了済み
+
 - ✅ フェーズ1: プロジェクト基盤構築（ほぼ完了）
   - モノレポ環境、TypeScript、リンター・フォーマッター
   - 全パッケージの構造とビルド環境
@@ -291,6 +292,7 @@
   - README.md、CONTRIBUTING.md、LICENSE、CLAUDE.md
 
 #### 未完了（今後のタスク）
+
 - ⏳ Storybookの設定ファイル作成（.storybook/）
 - ⏳ テストユーティリティの実装
 - ⏳ CI/CD環境構築（GitHub Actions）

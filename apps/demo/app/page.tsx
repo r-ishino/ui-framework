@@ -1,6 +1,8 @@
+'use client';
+
 import type { ReactElement } from 'react';
 import { Badge, Button, version as uiVersion } from '@sample/ui';
-import { version as nextjsVersion } from '@sample/nextjs';
+import { NextLink, version as nextjsVersion } from '@sample/nextjs';
 import { version as utilVersion, isBlank, isObject } from '@sample/util';
 import { AsyncButtonDemo } from './AsyncButtonDemo';
 
@@ -67,6 +69,34 @@ const Home = (): ReactElement => (
     </section>
 
     <AsyncButtonDemo />
+
+    <section style={{ marginTop: '2rem' }}>
+      <h2>NextLink Component Demo</h2>
+      <p style={{ marginTop: '1rem' }}>
+        NextLink combines Next.js Link routing with @sample/ui styling:
+      </p>
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+          marginTop: '1rem',
+          flexWrap: 'wrap',
+        }}
+      >
+        <NextLink href="/about" variant="primary">
+          Go to About (Primary)
+        </NextLink>
+        <NextLink href="/about" variant="secondary">
+          Go to About (Secondary)
+        </NextLink>
+        <NextLink href="/about" variant="muted">
+          Go to About (Muted)
+        </NextLink>
+        <NextLink disabled href="/about" variant="primary">
+          Disabled Link
+        </NextLink>
+      </div>
+    </section>
 
     <section style={{ marginTop: '2rem' }}>
       <h2>Helper Utilities Demo</h2>

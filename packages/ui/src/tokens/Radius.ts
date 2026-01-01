@@ -5,7 +5,7 @@ export const borderRadius = {
   s: '2px',
   m: '4px',
   l: '8px',
-  circle: '9999px'
+  circle: '9999px',
 } as const satisfies {
   [key: string]: string;
 };

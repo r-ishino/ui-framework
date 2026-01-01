@@ -5,4 +5,6 @@
 
 export const version = '0.1.0';
 
-// TODO: Export Next.js components here
+// Components
+export { NextLink } from './components/NextLink';
+export type { NextLinkProps } from './components/NextLink';

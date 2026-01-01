@@ -102,6 +102,7 @@ export default function MyPage() {
 ### Adding a New Feature
 
 1. Create a feature branch
+
    ```bash
    git checkout -b feature/new-component
    ```
@@ -109,11 +110,13 @@ export default function MyPage() {
 2. Implement your changes
 
 3. Add a changeset
+
    ```bash
    pnpm changeset
    ```
 
 4. Commit and push
+
    ```bash
    git add .
    git commit -m "feat: add new component"

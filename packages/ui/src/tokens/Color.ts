@@ -47,7 +47,7 @@ export const color = {
   secondaryPink: '#B82987',
   secondaryPink500: '#DB94C3',
   secondaryPink100: '#F8EAF3',
-  secondaryPink50: '#FBF4F9'
+  secondaryPink50: '#FBF4F9',
 } as const satisfies {
   [key: string]: string;
 };
