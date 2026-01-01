@@ -1,9 +1,14 @@
 import { describe, test, expect } from 'vitest';
+import { version, NextLink } from './index';
 
-describe('@sample/nextjs', () => {
-  test('placeholder test', () => {
-    // このテストは、パッケージにテストファイルが必要なため作成されたプレースホルダーです
-    // 実際のコンポーネントテストは今後追加されます
-    expect(true).toBe(true);
+describe('@sample/nextjs index', () => {
+  test('versionがエクスポートされている', () => {
+    expect(version).toBeDefined();
+    expect(typeof version).toBe('string');
+  });
+
+  test('NextLinkがエクスポートされている', () => {
+    expect(NextLink).toBeDefined();
+    expect(typeof NextLink).toBe('function');
   });
 });

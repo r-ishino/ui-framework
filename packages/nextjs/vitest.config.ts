@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [
@@ -9,6 +10,12 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '@sample/ui': resolve(__dirname, '../ui/src'),
+      '@sample/util': resolve(__dirname, '../util/src'),
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',

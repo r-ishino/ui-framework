@@ -12,7 +12,7 @@ export default defineConfig({
     }),
     dts({
       insertTypesEntry: true,
-      exclude: ['**/*.test.tsx', '**/*.spec.tsx'],
+      exclude: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
     }),
   ],
   build: {
