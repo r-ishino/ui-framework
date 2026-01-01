@@ -11,6 +11,7 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "tsc": "turbo tsc",
+    "storybook": "pnpm --filter @sample/ui storybook",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yaml,yml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yaml,yml}\"",
     "clean": "turbo clean && rm -rf node_modules",
