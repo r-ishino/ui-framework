@@ -1,16 +1,16 @@
 import { describe, test, expect } from 'vitest';
-import * as tokens from './index';
+import { color, space, borderRadius } from './index';
 
 describe('tokens index', () => {
   test('colorがエクスポートされている', () => {
-    expect(tokens.color).toBeDefined();
+    expect(color).toBeDefined();
   });
 
   test('spaceがエクスポートされている', () => {
-    expect(tokens.space).toBeDefined();
+    expect(space).toBeDefined();
   });
 
   test('borderRadiusがエクスポートされている', () => {
-    expect(tokens.borderRadius).toBeDefined();
+    expect(borderRadius).toBeDefined();
   });
 });

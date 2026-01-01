@@ -183,7 +183,7 @@ describe('Button', () => {
   describe('組み合わせ', () => {
     test('variant、size、disabledを同時に指定できる', () => {
       render(
-        <Button variant="outline" size="lg" disabled>
+        <Button disabled size="lg" variant="outline">
           Combined
         </Button>
       );
@@ -198,11 +198,11 @@ describe('Button', () => {
 
       render(
         <Button
-          variant="secondary"
-          size="sm"
-          onClick={handleClick}
-          type="button"
           className="test-class"
+          onClick={handleClick}
+          size="sm"
+          type="button"
+          variant="secondary"
         >
           All Props
         </Button>

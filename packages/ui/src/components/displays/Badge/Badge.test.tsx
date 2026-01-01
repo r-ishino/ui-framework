@@ -97,7 +97,7 @@ describe('Badge', () => {
   describe('組み合わせ', () => {
     test('importantとclassNameを同時に指定できる', () => {
       render(
-        <Badge important className="custom-class">
+        <Badge className="custom-class" important>
           Combined
         </Badge>
       );
@@ -109,10 +109,10 @@ describe('Badge', () => {
     test('すべてのpropsを組み合わせて使用できる', () => {
       render(
         <Badge
-          important
           className="test-class"
           data-testid="test-badge"
           id="badge-123"
+          important
           title="Test badge"
         >
           All Props
