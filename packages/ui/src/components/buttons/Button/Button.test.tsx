@@ -116,7 +116,8 @@ describe('Button', () => {
     test('非同期onClickの場合、処理完了まで待機する', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn(
-        async () => await new Promise((resolve) => setTimeout(resolve, 50))
+        async (_event): Promise<void> =>
+          await new Promise((resolve) => setTimeout(resolve, 50))
       );
 
       render(<Button onClick={handleClick}>Async</Button>);
@@ -137,7 +138,8 @@ describe('Button', () => {
     test('非同期onClick実行中は複数回クリックできない', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn(
-        async () => await new Promise((resolve) => setTimeout(resolve, 100))
+        async (_event): Promise<void> =>
+          await new Promise((resolve) => setTimeout(resolve, 100))
       );
 
       render(<Button onClick={handleClick}>Async</Button>);

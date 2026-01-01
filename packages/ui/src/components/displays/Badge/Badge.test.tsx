@@ -72,7 +72,7 @@ describe('Badge', () => {
 
   describe('children', () => {
     test('空文字列を表示できる', () => {
-      render(<Badge data-testid="empty-badge"></Badge>);
+      render(<Badge data-testid="empty-badge">{''}</Badge>);
       const badge = screen.getByTestId('empty-badge');
       expect(badge).toBeInTheDocument();
       expect(badge.textContent).toBe('');
