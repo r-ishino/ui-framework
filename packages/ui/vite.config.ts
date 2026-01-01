@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import wyw from '@wyw-in-js/vite';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
@@ -22,6 +23,11 @@ const input = Object.fromEntries(
 
 export default defineConfig({
   plugins: [
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler', { target: '19' }]],
+      },
+    }),
     wyw({
       include: ['**/*.{ts,tsx}'],
       exclude: ['node_modules/**', '**/*.stories.tsx'],

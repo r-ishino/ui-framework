@@ -197,6 +197,29 @@ export default [
           selector: 'TSInterfaceDeclaration',
           message: 'Prefer types to interfaces.',
         },
+        // useMemo (both useMemo and React.useMemo)
+        {
+          selector: 'CallExpression[callee.name="useMemo"]',
+          message: 'useMemo is no longer needed with React Compiler. Consider removing it.',
+        },
+        {
+          selector: 'CallExpression[callee.object.name="React"][callee.property.name="useMemo"]',
+          message: 'React.useMemo is no longer needed with React Compiler. Consider removing it.',
+        },
+        // useCallback (both useCallback and React.useCallback)
+        {
+          selector: 'CallExpression[callee.name="useCallback"]',
+          message: 'useCallback is no longer needed with React Compiler. Consider removing it.',
+        },
+        {
+          selector: 'CallExpression[callee.object.name="React"][callee.property.name="useCallback"]',
+          message: 'React.useCallback is no longer needed with React Compiler. Consider removing it.',
+        },
+        // React.memo
+        {
+          selector: 'CallExpression[callee.object.name="React"][callee.property.name="memo"]',
+          message: 'React.memo is no longer needed with React Compiler. Consider removing it.',
+        },
       ],
     },
   },

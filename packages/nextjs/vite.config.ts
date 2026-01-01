@@ -1,9 +1,15 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   plugins: [
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler', { target: '19' }]],
+      },
+    }),
     dts({
       insertTypesEntry: true,
       exclude: ['**/*.test.tsx', '**/*.spec.tsx'],

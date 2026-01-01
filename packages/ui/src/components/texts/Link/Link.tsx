@@ -74,15 +74,14 @@ export const Link: React.FC<LinkProps> = ({
   ...props
 }: LinkProps) => {
   const childrenDom = <>{children}</>;
-  const handleClick = React.useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      if (disabled) {
-        e.preventDefault();
-      }
-      if (onClick != null) onClick(e);
-    },
-    [disabled, onClick]
-  );
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ): void => {
+    if (disabled) {
+      e.preventDefault();
+    }
+    if (onClick != null) onClick(e);
+  };
   const classNames: string = cx(
     className,
     linkStyle,
