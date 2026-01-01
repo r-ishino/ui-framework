@@ -34,12 +34,13 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/node": "^20.11.17",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^4.0.16",
     "babel-plugin-react-compiler": "^1.0.0",
     "glob": "^13.0.0",
     "jsdom": "^24.0.0",

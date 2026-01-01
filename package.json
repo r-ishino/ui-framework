@@ -43,7 +43,8 @@
   },
   "pnpm": {
     "overrides": {
-      "@wyw-in-js/processor-utils": "0.8.1"
+      "@wyw-in-js/processor-utils": "0.8.1",
+      "@types/node": "^22.10.5"
     }
   }
 }

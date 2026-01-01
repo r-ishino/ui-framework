@@ -8,7 +8,7 @@ import { readFileSync } from 'fs';
 
 // src配下の全.ts/.tsxファイルを取得（stories/testを除く）
 const entries = glob.sync('src/**/*.{ts,tsx}', {
-  ignore: ['**/*.stories.tsx', '**/*.test.tsx'],
+  ignore: ['**/*.stories.tsx', '**/*.test.{ts,tsx}'],
   cwd: __dirname,
 });
 
@@ -40,7 +40,7 @@ export default defineConfig({
     }),
     dts({
       insertTypesEntry: true,
-      exclude: ['**/*.stories.tsx', '**/*.test.tsx'],
+      exclude: ['**/*.stories.tsx', '**/*.test.{ts,tsx}'],
     }),
   ],
   build: {
