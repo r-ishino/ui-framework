@@ -9,6 +9,9 @@ const preview: Preview = {
       },
     },
     actions: { argTypesRegex: '^on[A-Z].*' },
+    docs: {
+      codePanel: true,
+    },
   },
   tags: ['autodocs'],
 };
