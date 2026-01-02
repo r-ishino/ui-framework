@@ -47,8 +47,7 @@ lerna-debug.log*
 .turbo/
 
 # Changesets
-.changeset/*.md
-!.changeset/README.md
+# Note: changesetファイル(.changeset/*.md)はコミットする必要があるため、ignoreしない
 
 # Temporary files
 *.tmp
