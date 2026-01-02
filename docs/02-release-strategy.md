@@ -207,7 +207,7 @@ pnpm changeset init
 
 ```
 @YOUR-ORG:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+//npm.pkg.github.com/:_authToken=${PACKAGE_TOKEN}
 ```
 
 `YOUR-ORG`は実際のGitHub organizationまたはユーザー名に置き換えてください。
@@ -281,7 +281,7 @@ jobs:
           title: 'chore: release packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 #### 6. ルート`package.json`にスクリプト追加
@@ -467,7 +467,7 @@ GitHub Actionsでは`GITHUB_TOKEN`が自動的に利用可能です：
 - name: Install dependencies
   run: pnpm install
   env:
-    NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    PACKAGE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## ベストプラクティス

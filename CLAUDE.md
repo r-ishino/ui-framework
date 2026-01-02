@@ -300,6 +300,7 @@ kill -9 <PID>  # PIDを指定して強制終了
 - [docs/01-tasks.md](./docs/01-tasks.md) - 実装タスク
 - [docs/02-release-strategy.md](./docs/02-release-strategy.md) - リリース戦略
 - [docs/03-pnpm-vs-turbo.md](./docs/03-pnpm-vs-turbo.md) - ツール比較
+- [docs/RELEASE.md](./docs/RELEASE.md) - リリース手順ガイド（実践的）
 - [CONTRIBUTING.md](./CONTRIBUTING.md) - コントリビューションガイド
 
 ## 重要な注意事項
