@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactElement } from 'react';
-import { NextLink } from '@sample/nextjs';
+import { NextLink } from '@r-ishino/sample-nextjs';
 
 const About = (): ReactElement => (
   <main style={{ padding: '2rem' }}>

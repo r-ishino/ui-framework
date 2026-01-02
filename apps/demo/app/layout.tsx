@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode, ReactElement } from 'react';
-import '@sample/ui/styles.css';
+import '@r-ishino/sample-ui/styles.css';
 
 export const metadata: Metadata = {
   title: 'Sample UI Framework Demo',

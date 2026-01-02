@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@sample/ui': resolve(__dirname, '../ui/src'),
+      '@r-ishino/sample-ui': resolve(__dirname, '../ui/src'),
       '@sample/util': resolve(__dirname, '../util/src'),
     },
   },

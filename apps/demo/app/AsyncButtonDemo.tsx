@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@sample/ui';
+import { Button } from '@r-ishino/sample-ui';
 import { useState } from 'react';
 import type { ReactElement } from 'react';
 

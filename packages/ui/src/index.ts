@@ -1,5 +1,5 @@
 /**
- * @sample/ui
+ * @r-ishino/sample-ui
  * Reusable React UI components
  */
 

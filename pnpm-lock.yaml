@@ -63,13 +63,13 @@ importers:
 
   apps/demo:
     dependencies:
-      '@sample/nextjs':
+      '@r-ishino/sample-nextjs':
         specifier: workspace:*
         version: link:../../packages/nextjs
-      '@sample/ui':
+      '@r-ishino/sample-ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@sample/util':
+      '@r-ishino/sample-util':
         specifier: workspace:*
         version: link:../../packages/util
       next:
@@ -100,10 +100,10 @@ importers:
 
   packages/nextjs:
     dependencies:
-      '@sample/ui':
+      '@r-ishino/sample-ui':
         specifier: workspace:*
         version: link:../ui
-      '@sample/util':
+      '@r-ishino/sample-util':
         specifier: workspace:*
         version: link:../util
     devDependencies:
@@ -167,7 +167,7 @@ importers:
       '@linaria/react':
         specifier: ^6.3.0
         version: 6.3.0(react@19.2.3)
-      '@sample/util':
+      '@r-ishino/sample-util':
         specifier: workspace:*
         version: link:../util
       linaria:
@@ -6520,14 +6520,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.2))(eslint@9.39.2):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import@2.32.0)(eslint@9.39.2))(eslint@9.39.2):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.50.1(eslint@9.39.2)(typescript@5.9.3)
       eslint: 9.39.2
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.2)
+      eslint-import-resolver-typescript: 4.4.4(eslint-plugin-import@2.32.0)(eslint@9.39.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -6553,7 +6553,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.39.2
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.2))(eslint@9.39.2)
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.50.1(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import@2.32.0)(eslint@9.39.2))(eslint@9.39.2)
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3

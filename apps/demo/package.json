@@ -13,9 +13,9 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
-    "@sample/nextjs": "workspace:*",
-    "@sample/ui": "workspace:*",
-    "@sample/util": "workspace:*",
+    "@r-ishino/sample-nextjs": "workspace:*",
+    "@r-ishino/sample-ui": "workspace:*",
+    "@r-ishino/sample-util": "workspace:*",
     "next": "^16.1.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"

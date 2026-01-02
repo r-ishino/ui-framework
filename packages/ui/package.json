@@ -1,5 +1,5 @@
 {
-  "name": "@sample/ui",
+  "name": "@r-ishino/sample-ui",
   "version": "0.2.0",
   "description": "Reusable React UI components",
   "type": "module",
@@ -30,7 +30,7 @@
   "dependencies": {
     "@linaria/core": "^6.3.0",
     "@linaria/react": "^6.3.0",
-    "@sample/util": "workspace:*",
+    "@r-ishino/sample-util": "workspace:*",
     "linaria": "^6.3.0"
   },
   "peerDependencies": {

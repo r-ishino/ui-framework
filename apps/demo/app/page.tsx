@@ -1,9 +1,9 @@
 'use client';
 
 import type { ReactElement } from 'react';
-import { Badge, Button, version as uiVersion } from '@sample/ui';
-import { NextLink, version as nextjsVersion } from '@sample/nextjs';
-import { version as utilVersion, isBlank, isObject } from '@sample/util';
+import { Badge, Button, version as uiVersion } from '@r-ishino/sample-ui';
+import { NextLink, version as nextjsVersion } from '@r-ishino/sample-nextjs';
+import { version as utilVersion, isBlank, isObject } from '@r-ishino/sample-util';
 import { AsyncButtonDemo } from './AsyncButtonDemo';
 
 const Home = (): ReactElement => (
@@ -14,9 +14,9 @@ const Home = (): ReactElement => (
     <section style={{ marginTop: '2rem' }}>
       <h2>Installed Packages</h2>
       <ul>
-        <li>@sample/ui: v{uiVersion}</li>
-        <li>@sample/nextjs: v{nextjsVersion}</li>
-        <li>@sample/util: v{utilVersion}</li>
+        <li>@r-ishino/sample-ui: v{uiVersion}</li>
+        <li>@r-ishino/sample-nextjs: v{nextjsVersion}</li>
+        <li>@r-ishino/sample-util: v{utilVersion}</li>
       </ul>
     </section>
 
@@ -73,7 +73,7 @@ const Home = (): ReactElement => (
     <section style={{ marginTop: '2rem' }}>
       <h2>NextLink Component Demo</h2>
       <p style={{ marginTop: '1rem' }}>
-        NextLink combines Next.js Link routing with @sample/ui styling:
+        NextLink combines Next.js Link routing with @r-ishino/sample-ui styling:
       </p>
       <div
         style={{

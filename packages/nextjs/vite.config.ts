@@ -28,7 +28,7 @@ export default defineConfig({
         'react/jsx-runtime',
         'next',
         'next/link',
-        '@sample/ui',
+        '@r-ishino/sample-ui',
         '@sample/util',
       ],
     },

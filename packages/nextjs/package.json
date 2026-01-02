@@ -1,5 +1,5 @@
 {
-  "name": "@sample/nextjs",
+  "name": "@r-ishino/sample-nextjs",
   "version": "0.2.0",
   "description": "Next.js specific components and utilities",
   "type": "module",
@@ -25,8 +25,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@sample/ui": "workspace:*",
-    "@sample/util": "workspace:*"
+    "@r-ishino/sample-ui": "workspace:*",
+    "@r-ishino/sample-util": "workspace:*"
   },
   "peerDependencies": {
     "next": "^14.0.0",
