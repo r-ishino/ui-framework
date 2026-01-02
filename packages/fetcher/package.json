@@ -1,6 +1,6 @@
 {
   "name": "@r-ishino/sample-fetcher",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Type-safe HTTP fetcher with JWT authentication and SWR hooks",
   "type": "module",
   "main": "./dist/index.js",
