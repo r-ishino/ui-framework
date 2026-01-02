@@ -1,24 +1,26 @@
-import { fetcher } from './fetcher';
-import type { FetcherOptions, FetcherResponse } from './types';
+import { fetcher, type FetcherOptions } from './fetcher';
+import type { FetcherResult } from './response';
 
 /**
- * GETリクエスト
+ * GET リクエスト (Result型)
+ * エラーをthrowせず、FetcherResultを返す
  */
 export const getRequest = <T, E = unknown>(
   url: string,
   params?: Record<string, unknown>,
   options?: FetcherOptions<E>
-): Promise<FetcherResponse<T>> =>
+): Promise<FetcherResult<T, E>> =>
   fetcher<T, E>(url, { ...options, params, method: 'GET' });
 
 /**
- * POSTリクエスト
+ * POST リクエスト (Result型)
+ * エラーをthrowせず、FetcherResultを返す
  */
 export const postRequest = <T, E = unknown>(
   url: string,
   data?: unknown,
   options?: FetcherOptions<E>
-): Promise<FetcherResponse<T>> =>
+): Promise<FetcherResult<T, E>> =>
   fetcher<T, E>(url, {
     ...options,
     method: 'POST',
@@ -26,13 +28,14 @@ export const postRequest = <T, E = unknown>(
   });
 
 /**
- * PUTリクエスト
+ * PUT リクエスト (Result型)
+ * エラーをthrowせず、FetcherResultを返す
  */
 export const putRequest = <T, E = unknown>(
   url: string,
   data?: unknown,
   options?: FetcherOptions<E>
-): Promise<FetcherResponse<T>> =>
+): Promise<FetcherResult<T, E>> =>
   fetcher<T, E>(url, {
     ...options,
     method: 'PUT',
@@ -40,11 +43,12 @@ export const putRequest = <T, E = unknown>(
   });
 
 /**
- * DELETEリクエスト
+ * DELETE リクエスト (Result型)
+ * エラーをthrowせず、FetcherResultを返す
  */
 export const deleteRequest = <T, E = unknown>(
   url: string,
   params?: Record<string, unknown>,
   options?: FetcherOptions<E>
-): Promise<FetcherResponse<T>> =>
+): Promise<FetcherResult<T, E>> =>
   fetcher<T, E>(url, { ...options, params, method: 'DELETE' });

@@ -1,13 +1,24 @@
 // Core fetcher
-export { fetcher } from './core/fetcher';
-export type {
-  FetcherOptions,
-  FetcherResponse,
-  FetcherError,
-} from './core/types';
-export { createFetcherError, isFetcherError } from './core/types';
+export { fetcher, type FetcherOptions } from './core/fetcher';
 
-// HTTP methods
+// Error types and functions
+export { createFetcherError, isFetcherError, type FetcherError } from './core/error';
+
+// Response types and functions
+export type {
+  FetcherResponse,
+  FetcherResult,
+  FetcherSuccess,
+  FetcherFailure,
+} from './core/response';
+export {
+  isSuccess,
+  isFailure,
+  createSuccess,
+  createFailure,
+} from './core/response';
+
+// HTTP methods (return Result type)
 export {
   getRequest,
   postRequest,

@@ -21,6 +21,35 @@ const Home = (): ReactElement => (
         <li>@r-ishino/sample-ui: v{uiVersion}</li>
         <li>@r-ishino/sample-nextjs: v{nextjsVersion}</li>
         <li>@r-ishino/sample-util: v{utilVersion}</li>
+        <li>@r-ishino/sample-fetcher: New! 🎉</li>
+      </ul>
+    </section>
+
+    <section style={{ marginTop: '2rem' }}>
+      <h2>Fetcher Package Demo</h2>
+      <p style={{ marginTop: '1rem' }}>
+        Type-safe HTTP client built on standard Fetch API:
+      </p>
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+          marginTop: '1rem',
+          flexWrap: 'wrap',
+        }}
+      >
+        <NextLink href="/fetcher-server" variant="primary">
+          Server-side Example
+        </NextLink>
+        <NextLink href="/fetcher-client" variant="primary">
+          Client-side Example
+        </NextLink>
+      </div>
+      <ul style={{ marginTop: '1rem' }}>
+        <li>✅ Type-safe requests with TypeScript</li>
+        <li>✅ Works on both server and client</li>
+        <li>✅ Interceptors for common patterns</li>
+        <li>✅ Query parameters & timeout support</li>
       </ul>
     </section>
 

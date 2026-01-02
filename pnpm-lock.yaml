@@ -63,6 +63,9 @@ importers:
 
   apps/demo:
     dependencies:
+      '@r-ishino/sample-fetcher':
+        specifier: workspace:*
+        version: link:../../packages/fetcher
       '@r-ishino/sample-nextjs':
         specifier: workspace:*
         version: link:../../packages/nextjs

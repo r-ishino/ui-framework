@@ -13,6 +13,7 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
+    "@r-ishino/sample-fetcher": "workspace:*",
     "@r-ishino/sample-nextjs": "workspace:*",
     "@r-ishino/sample-ui": "workspace:*",
     "@r-ishino/sample-util": "workspace:*",

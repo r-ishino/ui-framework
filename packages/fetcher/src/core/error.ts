@@ -1,22 +1,3 @@
-export type FetcherOptions<E = unknown> = RequestInit & {
-  baseURL?: string;
-  timeout?: number;
-  headers?: Record<string, string>;
-  params?: Record<string, unknown>;
-  onRequest?: (
-    config: FetcherOptions<E>
-  ) => FetcherOptions<E> | Promise<FetcherOptions<E>>;
-  onResponse?: <T>(response: Response, data: T) => T | Promise<T>;
-  onError?: (error: FetcherError<E>) => void | Promise<void>;
-};
-
-export type FetcherResponse<T> = {
-  data: T;
-  status: number;
-  statusText: string;
-  headers: Headers;
-};
-
 export type FetcherError<E = unknown> = Error & {
   status: number;
   response?: Response;

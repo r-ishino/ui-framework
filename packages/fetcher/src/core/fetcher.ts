@@ -1,5 +1,23 @@
 import { buildQueryString } from '../utils/queryString';
-import { createFetcherError, FetcherOptions, FetcherResponse } from './types';
+import { createFetcherError, type FetcherError } from './error';
+import {
+  createSuccess,
+  createFailure,
+  parseResponseBody,
+  type FetcherResult,
+} from './response';
+
+export type FetcherOptions<E = unknown> = RequestInit & {
+  baseURL?: string;
+  timeout?: number;
+  headers?: Record<string, string>;
+  params?: Record<string, unknown>;
+  onRequest?: (
+    config: FetcherOptions<E>
+  ) => FetcherOptions<E> | Promise<FetcherOptions<E>>;
+  onResponse?: <T>(response: Response, data: T) => T | Promise<T>;
+  onError?: (error: FetcherError<E>) => void | Promise<void>;
+};
 
 /**
  * カスタムヘッダーをRecord<string, string>に変換
@@ -9,25 +27,12 @@ const parseCustomHeaders = (
 ): Record<string, string> => headers || {};
 
 /**
- * レスポンスボディを解析
- */
-const parseResponseBody = async <T>(response: Response): Promise<T> => {
-  const contentType = response.headers.get('content-type');
-  if (contentType?.includes('application/json')) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return response.json();
-  }
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  return (await response.text()) as unknown as T;
-};
-
-/**
- * Fetcher関数
+ * Fetcher関数（Result型を返す）
  */
 export const fetcher = async <T, E = unknown>(
   url: string,
   options?: FetcherOptions<E>
-): Promise<FetcherResponse<T>> => {
+): Promise<FetcherResult<T, E>> => {
   const {
     baseURL = '',
     timeout = 30000,
@@ -87,18 +92,13 @@ export const fetcher = async <T, E = unknown>(
         await onError(error);
       }
 
-      throw error;
+      return createFailure<E>(error, response.status);
     }
 
     // レスポンスインターセプター
     const data: T = onResponse ? await onResponse(response, rawData) : rawData;
 
-    return {
-      data,
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers,
-    };
+    return createSuccess(data, response.status, response.statusText, response.headers);
   } catch (error) {
     clearTimeout(timeoutId);
 
@@ -108,9 +108,9 @@ export const fetcher = async <T, E = unknown>(
       if (onError) {
         await onError(timeoutError);
       }
-      throw timeoutError;
+      return createFailure<E>(timeoutError, 408);
     }
 
-    throw error;
+    return createFailure<E>(error, 500);
   }
 };
