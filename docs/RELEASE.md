@@ -90,6 +90,7 @@ Added new component
 ```
 
 説明は：
+
 - 利用者向けに書く
 - 何が追加/修正されたか明確に
 - 英語で書く（CHANGELOGに表示される）
@@ -117,6 +118,7 @@ PRを作成し、レビューを依頼します。
 mainにマージされると、GitHub Actionsが自動的に**"Version Packages"**という名前のPRを作成します。
 
 このPRには：
+
 - バージョン番号の更新
 - CHANGELOGの更新
 - 依存パッケージのバージョン更新
@@ -172,6 +174,7 @@ Version Packages PRをマージすると、自動的に：
 ```
 
 **例：**
+
 - 既存のpropsを削除
 - props名を変更
 - コンポーネントのAPIを変更
@@ -184,6 +187,7 @@ Version Packages PRをマージすると、自動的に：
 ```
 
 **例：**
+
 - 新しいコンポーネントを追加
 - 新しいpropsを追加（既存動作は変わらない）
 - 新しいユーティリティ関数を追加
@@ -195,6 +199,7 @@ Version Packages PRをマージすると、自動的に：
 ```
 
 **例：**
+
 - バグを修正
 - 内部リファクタリング（APIは変わらない）
 - ドキュメントの修正
@@ -239,29 +244,35 @@ pnpm changeset pre exit
 ### Version Packages PRが作成されない
 
 **原因：**
+
 - changesetファイルがmainにマージされていない
 - GitHub Actionsが失敗している
 
 **解決：**
+
 1. `.changeset/`ディレクトリに`.md`ファイルがあるか確認
 2. GitHub Actionsの実行ログを確認
 
 ### パッケージが公開されない
 
 **原因：**
+
 - GitHub Actionsのpermissionsが不足
 - repository URLが間違っている
 
 **解決：**
+
 1. `.github/workflows/release.yml`のpermissionsを確認
 2. package.jsonの`repository`フィールドを確認
 
 ### CHANGELOGにPRリンクが表示されない
 
 **原因：**
+
 - `@changesets/changelog-github`が正しく設定されていない
 
 **解決：**
+
 - `.changeset/config.json`の`changelog`設定を確認
 
 ## パッケージの利用
@@ -282,6 +293,7 @@ pnpm changeset pre exit
 GitHub Settings → Developer settings → Personal access tokens → Generate new token
 
 必要な権限:
+
 - `read:packages`
 
 #### 3. 環境変数に設定
@@ -301,12 +313,14 @@ pnpm add @r-ishino/ui
 ## まとめ
 
 **開発者がやること：**
+
 1. コードを書く
 2. `pnpm changeset`を実行
 3. PRを作成・マージ
 4. Version Packages PRをマージ
 
 **自動化されること：**
+
 - バージョン番号の更新
 - CHANGELOGの生成
 - パッケージの公開

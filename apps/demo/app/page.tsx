@@ -3,7 +3,11 @@
 import type { ReactElement } from 'react';
 import { Badge, Button, version as uiVersion } from '@r-ishino/sample-ui';
 import { NextLink, version as nextjsVersion } from '@r-ishino/sample-nextjs';
-import { version as utilVersion, isBlank, isObject } from '@r-ishino/sample-util';
+import {
+  version as utilVersion,
+  isBlank,
+  isObject,
+} from '@r-ishino/sample-util';
 import { AsyncButtonDemo } from './AsyncButtonDemo';
 
 const Home = (): ReactElement => (
