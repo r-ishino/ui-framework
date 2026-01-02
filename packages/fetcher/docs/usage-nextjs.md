@@ -18,11 +18,19 @@
 ### lib/api/client.ts
 
 ```typescript
-import { fetcher, getRequest, postRequest, putRequest, deleteRequest, type FetcherOptions } from '@r-ishino/sample-fetcher';
+import {
+  fetcher,
+  getRequest,
+  postRequest,
+  putRequest,
+  deleteRequest,
+  type FetcherOptions,
+} from '@r-ishino/sample-fetcher';
 import { cookies } from 'next/headers';
 
 // APIのベースURL
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.example.com';
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || 'https://api.example.com';
 
 /**
  * サーバーサイド用：cookieからJWTを取得してヘッダーに設定
@@ -46,10 +54,16 @@ export const createServerFetcher = async () => {
   return {
     getRequest: <T, E = unknown>(url: string, options?: FetcherOptions<E>) =>
       get<T, E>(url, { ...baseOptions, ...options }),
-    postRequest: <T, E = unknown>(url: string, data?: unknown, options?: FetcherOptions<E>) =>
-      post<T, E>(url, data, { ...baseOptions, ...options }),
-    putRequest: <T, E = unknown>(url: string, data?: unknown, options?: FetcherOptions<E>) =>
-      put<T, E>(url, data, { ...baseOptions, ...options }),
+    postRequest: <T, E = unknown>(
+      url: string,
+      data?: unknown,
+      options?: FetcherOptions<E>
+    ) => post<T, E>(url, data, { ...baseOptions, ...options }),
+    putRequest: <T, E = unknown>(
+      url: string,
+      data?: unknown,
+      options?: FetcherOptions<E>
+    ) => put<T, E>(url, data, { ...baseOptions, ...options }),
     deleteRequest: <T, E = unknown>(url: string, options?: FetcherOptions<E>) =>
       del<T, E>(url, { ...baseOptions, ...options }),
   };
@@ -82,10 +96,16 @@ export const createClientFetcher = () => {
   return {
     getRequest: <T, E = unknown>(url: string, options?: FetcherOptions<E>) =>
       get<T, E>(url, { ...baseOptions, ...options }),
-    postRequest: <T, E = unknown>(url: string, data?: unknown, options?: FetcherOptions<E>) =>
-      post<T, E>(url, data, { ...baseOptions, ...options }),
-    putRequest: <T, E = unknown>(url: string, data?: unknown, options?: FetcherOptions<E>) =>
-      put<T, E>(url, data, { ...baseOptions, ...options }),
+    postRequest: <T, E = unknown>(
+      url: string,
+      data?: unknown,
+      options?: FetcherOptions<E>
+    ) => post<T, E>(url, data, { ...baseOptions, ...options }),
+    putRequest: <T, E = unknown>(
+      url: string,
+      data?: unknown,
+      options?: FetcherOptions<E>
+    ) => put<T, E>(url, data, { ...baseOptions, ...options }),
     deleteRequest: <T, E = unknown>(url: string, options?: FetcherOptions<E>) =>
       del<T, E>(url, { ...baseOptions, ...options }),
   };
@@ -154,6 +174,7 @@ export default async function DashboardPage() {
 ```
 
 **ポイント:**
+
 - `cookies()`を使ってサーバーサイドでJWTを取得
 - `Authorization`ヘッダーにJWTを自動的に設定
 - 型安全なAPI呼び出し（`User`と`ApiError`の型を指定）
@@ -190,7 +211,8 @@ export async function createPost(formData: FormData) {
       return {
         success: false,
         error: {
-          message: (error as { message?: string }).message || 'Failed to create post',
+          message:
+            (error as { message?: string }).message || 'Failed to create post',
           status: (error as { status: number }).status,
         },
       };
@@ -213,6 +235,7 @@ export async function deletePost(postId: string) {
 ```
 
 **ポイント:**
+
 - Server Actionsで認証が必要なAPIを呼び出し
 - `revalidatePath`でキャッシュを更新
 - エラーハンドリングを含む適切なレスポンスを返す
@@ -294,6 +317,7 @@ export function CreatePostForm() {
 ```
 
 **ポイント:**
+
 - `credentials: 'include'`でブラウザのcookieを自動送信
 - `onError`インターセプターで401エラー時に自動的にログインページへリダイレクト
 - ローディング状態とエラー状態を管理
@@ -316,14 +340,11 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const { data } = await fetcher(
-      'https://api.example.com/api/data',
-      {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
-      }
-    );
+    const { data } = await fetcher('https://api.example.com/api/data', {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
 
     return NextResponse.json(data);
   } catch (error) {
@@ -336,6 +357,7 @@ export async function GET(request: NextRequest) {
 ```
 
 **ポイント:**
+
 - Route Handlerで外部APIへのプロキシを実装
 - cookieからJWTを取得して外部APIに転送
 - エラーハンドリングを含む適切なレスポンスを返す
@@ -343,20 +365,24 @@ export async function GET(request: NextRequest) {
 ## 主なポイントまとめ
 
 ### サーバーサイド
+
 - `cookies()`を使ってJWTを取得
 - `Authorization`ヘッダーにJWTを設定
 - Server ComponentsやServer Actionsで使用
 
 ### クライアントサイド
+
 - `credentials: 'include'`でcookieを自動送信
 - Client Componentsで使用
 - インターセプターでエラーハンドリング（401エラーでリダイレクトなど）
 
 ### 型安全性
+
 - ジェネリック型`<T, E>`でレスポンスとエラーの型を指定
 - TypeScriptの型推論を活用
 
 ### インターセプター
+
 - `onRequest`: リクエスト前の共通処理
 - `onResponse`: レスポンス後のデータ変換
 - `onError`: エラー時の共通処理（ログ出力、リダイレクトなど）

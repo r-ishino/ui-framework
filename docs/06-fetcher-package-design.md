@@ -15,12 +15,14 @@
 既存のuseFetcher実装から以下の良い点を取り入れます：
 
 **良い点**:
+
 - paramsを別引数で受け取り、SWRのkeyとして統合
 - errorFallbackによる柔軟なエラーハンドリング
 - 401エラーなど特定のHTTPステータスを特別扱い
 - data/mutate/isLoadingのシンプルな返り値
 
 **改善点**:
+
 - Axiosへの依存を排除し、標準fetchを使用
 - useFetcherをGET専用に明確化（変更系はuseMutation使用）
 - errorHandlingロジックをフックから分離
@@ -91,17 +93,19 @@ export type FetcherOptions = RequestInit & {
   params?: Record<string, unknown>;
   // 認証設定
   auth?: {
-    tokenCookieName?: string;        // アクセストークンのcookie名（デフォルト: 'accessToken'）
+    tokenCookieName?: string; // アクセストークンのcookie名（デフォルト: 'accessToken'）
     refreshTokenCookieName?: string; // リフレッシュトークンのcookie名（デフォルト: 'refreshToken'）
-    refreshEndpoint?: string;        // トークンリフレッシュAPI（デフォルト: '/auth/refresh'）
-    onRefreshFailed?: () => void;    // リフレッシュ失敗時のコールバック
+    refreshEndpoint?: string; // トークンリフレッシュAPI（デフォルト: '/auth/refresh'）
+    onRefreshFailed?: () => void; // リフレッシュ失敗時のコールバック
   };
   // インターセプター
-  onRequest?: (config: FetcherOptions) => FetcherOptions | Promise<FetcherOptions>;
+  onRequest?: (
+    config: FetcherOptions
+  ) => FetcherOptions | Promise<FetcherOptions>;
   onResponse?: <T>(response: Response, data: T) => T | Promise<T>;
   onError?: (error: FetcherError) => void | Promise<void>;
   // リトライ設定
-  skipAuthRetry?: boolean;  // 401エラー時の自動リトライをスキップ
+  skipAuthRetry?: boolean; // 401エラー時の自動リトライをスキップ
 };
 
 export type FetcherResponse<T> = {
@@ -178,15 +182,12 @@ async function refreshAccessToken(options: FetcherOptions): Promise<string> {
       }
 
       // リフレッシュAPIを呼び出し（認証ループを防ぐためskipAuthRetryを設定）
-      const response = await fetcher<{ accessToken: string }>(
-        refreshEndpoint,
-        {
-          method: 'POST',
-          body: JSON.stringify({ refreshToken }),
-          skipAuthRetry: true,
-          baseURL: options.baseURL,
-        }
-      );
+      const response = await fetcher<{ accessToken: string }>(refreshEndpoint, {
+        method: 'POST',
+        body: JSON.stringify({ refreshToken }),
+        skipAuthRetry: true,
+        baseURL: options.baseURL,
+      });
 
       const newAccessToken = response.data.accessToken;
 
@@ -364,7 +365,11 @@ export async function fetcher<T>(
 export const get = <T>(url: string, options?: FetcherOptions) =>
   fetcher<T>(url, { ...options, method: 'GET' });
 
-export const post = <T>(url: string, data?: unknown, options?: FetcherOptions) =>
+export const post = <T>(
+  url: string,
+  data?: unknown,
+  options?: FetcherOptions
+) =>
   fetcher<T>(url, {
     ...options,
     method: 'POST',
@@ -472,7 +477,7 @@ export const buildQueryString = (params: Record<string, unknown>): string => {
     }
 
     if (Array.isArray(value)) {
-      value.forEach(item => {
+      value.forEach((item) => {
         searchParams.append(key, String(item));
       });
     } else {
@@ -585,35 +590,41 @@ export type UseMutationOptions<TData, TVariables> = {
 };
 
 export function useMutation<TData, TVariables = any>(
-  mutationFn: (variables: TVariables, options?: FetcherOptions) => Promise<TData>,
+  mutationFn: (
+    variables: TVariables,
+    options?: FetcherOptions
+  ) => Promise<TData>,
   options?: UseMutationOptions<TData, TVariables>
 ) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const trigger = useCallback(async (variables: TVariables) => {
-    setLoading(true);
-    setError(null);
+  const trigger = useCallback(
+    async (variables: TVariables) => {
+      setLoading(true);
+      setError(null);
 
-    try {
-      const data = await mutationFn(variables);
-      await options?.onSuccess?.(data, variables);
+      try {
+        const data = await mutationFn(variables);
+        await options?.onSuccess?.(data, variables);
 
-      // 関連するキャッシュを無効化
-      if (options?.invalidateKeys) {
-        options.invalidateKeys.forEach(key => mutate(key));
+        // 関連するキャッシュを無効化
+        if (options?.invalidateKeys) {
+          options.invalidateKeys.forEach((key) => mutate(key));
+        }
+
+        return data;
+      } catch (err) {
+        const error = err instanceof Error ? err : new Error(String(err));
+        setError(error);
+        await options?.onError?.(error, variables);
+        throw error;
+      } finally {
+        setLoading(false);
       }
-
-      return data;
-    } catch (err) {
-      const error = err instanceof Error ? err : new Error(String(err));
-      setError(error);
-      await options?.onError?.(error, variables);
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  }, [mutationFn, options]);
+    },
+    [mutationFn, options]
+  );
 
   return { trigger, loading, error };
 }
@@ -796,9 +807,9 @@ export const api = createFetcher({
   },
   // JWT認証設定
   auth: {
-    tokenCookieName: 'accessToken',        // アクセストークンのcookie名
+    tokenCookieName: 'accessToken', // アクセストークンのcookie名
     refreshTokenCookieName: 'refreshToken', // リフレッシュトークンのcookie名
-    refreshEndpoint: '/api/auth/refresh',   // トークンリフレッシュAPI
+    refreshEndpoint: '/api/auth/refresh', // トークンリフレッシュAPI
     onRefreshFailed: () => {
       // リフレッシュ失敗時にログイン画面へリダイレクト
       window.location.href = '/login';

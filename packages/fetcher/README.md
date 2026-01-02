@@ -31,7 +31,9 @@ type User = {
 };
 
 // 型安全なAPIリクエスト
-const { data, status } = await getRequest<User>('https://api.example.com/users/1');
+const { data, status } = await getRequest<User>(
+  'https://api.example.com/users/1'
+);
 console.log(data.name); // 型推論が効く
 ```
 
@@ -91,7 +93,7 @@ import { fetcher } from '@r-ishino/sample-fetcher';
 const response = await fetcher<User>('https://api.example.com/users/1', {
   method: 'GET',
   headers: {
-    'Authorization': 'Bearer token',
+    Authorization: 'Bearer token',
   },
 });
 ```
@@ -146,13 +148,15 @@ await deleteRequest('/api/users/1', { soft: true });
 
 ```typescript
 type FetcherOptions<E = unknown> = RequestInit & {
-  baseURL?: string;                    // ベースURL
-  timeout?: number;                    // タイムアウト（ミリ秒、デフォルト: 30000）
-  headers?: Record<string, string>;    // カスタムヘッダー
-  params?: Record<string, unknown>;    // クエリパラメータ
+  baseURL?: string; // ベースURL
+  timeout?: number; // タイムアウト（ミリ秒、デフォルト: 30000）
+  headers?: Record<string, string>; // カスタムヘッダー
+  params?: Record<string, unknown>; // クエリパラメータ
 
   // インターセプター
-  onRequest?: (config: FetcherOptions<E>) => FetcherOptions<E> | Promise<FetcherOptions<E>>;
+  onRequest?: (
+    config: FetcherOptions<E>
+  ) => FetcherOptions<E> | Promise<FetcherOptions<E>>;
   onResponse?: <T>(response: Response, data: T) => T | Promise<T>;
   onError?: (error: FetcherError<E>) => void | Promise<void>;
 };
@@ -162,10 +166,10 @@ type FetcherOptions<E = unknown> = RequestInit & {
 
 ```typescript
 type FetcherResponse<T> = {
-  data: T;              // レスポンスデータ
-  status: number;       // HTTPステータスコード
-  statusText: string;   // ステータステキスト
-  headers: Headers;     // レスポンスヘッダー
+  data: T; // レスポンスデータ
+  status: number; // HTTPステータスコード
+  statusText: string; // ステータステキスト
+  headers: Headers; // レスポンスヘッダー
 };
 ```
 
@@ -173,9 +177,9 @@ type FetcherResponse<T> = {
 
 ```typescript
 type FetcherError<E = unknown> = Error & {
-  status: number;       // HTTPステータスコード
-  response?: Response;  // 元のResponseオブジェクト
-  data?: E;             // エラーレスポンスデータ
+  status: number; // HTTPステータスコード
+  response?: Response; // 元のResponseオブジェクト
+  data?: E; // エラーレスポンスデータ
 };
 ```
 
@@ -197,7 +201,7 @@ const { data } = await getRequest<User>('/users/1', {
 ```typescript
 const { data } = await getRequest<User>('/users/1', {
   headers: {
-    'Authorization': 'Bearer token',
+    Authorization: 'Bearer token',
     'X-Custom-Header': 'value',
   },
 });
@@ -316,6 +320,7 @@ throw error;
 Next.js App RouterでJWT認証を使用する場合の詳細な例は、[docs/usage-nextjs.md](./docs/usage-nextjs.md)を参照してください。
 
 主なトピック：
+
 - Server ComponentsとClient Componentsでの使用
 - cookieからのJWT取得と自動付与
 - Server Actionsでの使用
