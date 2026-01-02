@@ -3,7 +3,9 @@
  * Next.js specific components and utilities
  */
 
-export const version = '0.1.0';
+import packageJson from '../package.json';
+
+export const version = packageJson.version;
 
 // Components
 export { NextLink } from './components/NextLink';

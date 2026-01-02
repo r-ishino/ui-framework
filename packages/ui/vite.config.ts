@@ -40,7 +40,7 @@ export default defineConfig({
     }),
     dts({
       insertTypesEntry: true,
-      exclude: ['**/*.stories.tsx', '**/*.test.{ts,tsx}'],
+      exclude: ['**/*.stories.tsx', '**/*.test.{ts,tsx}', '**/package.json'],
     }),
   ],
   build: {

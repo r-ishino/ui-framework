@@ -3,7 +3,9 @@
  * Reusable React UI components
  */
 
-export const version = '0.1.0';
+import packageJson from '../package.json';
+
+export const version = packageJson.version;
 
 export * from './components';
 export * from './tokens';

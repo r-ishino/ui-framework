@@ -4,8 +4,9 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "incremental": false,
+    "resolveJsonModule": true,
     "lib": ["ES2022", "DOM"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "package.json"],
   "exclude": ["node_modules", "dist"]
 }

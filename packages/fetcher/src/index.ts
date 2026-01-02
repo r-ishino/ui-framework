@@ -1,3 +1,7 @@
+import packageJson from '../package.json';
+
+export const version = packageJson.version;
+
 // Core fetcher
 export { fetcher, type FetcherOptions } from './core/fetcher';
 
