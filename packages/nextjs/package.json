@@ -1,6 +1,6 @@
 {
   "name": "@sample/nextjs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Next.js specific components and utilities",
   "type": "module",
   "main": "./dist/index.js",
