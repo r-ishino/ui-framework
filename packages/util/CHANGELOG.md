@@ -1,5 +1,11 @@
 # @sample/util
 
+## 0.2.1
+
+### Patch Changes
+
+- [`cd6f1e3`](https://github.com/r-ishino/ui-framework/commit/cd6f1e3c42b0ad55424fad9d704d387e445e2b29) Thanks [@r-ishino](https://github.com/r-ishino)! - second release
+
 ## 0.2.0
 
 ### Minor Changes
