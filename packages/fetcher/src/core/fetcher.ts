@@ -1,4 +1,4 @@
-import { buildQueryString } from '../utils/queryString';
+import { convertToUrl } from '@r-ishino/sample-util';
 import { createFetcherError, type FetcherError } from './error';
 import {
   createSuccess,
@@ -45,8 +45,7 @@ export const fetcher = async <T, E = unknown>(
   } = options || {};
 
   // URL構築
-  const queryString = params ? buildQueryString(params) : '';
-  const fullUrl = `${baseURL}${url}${queryString ? `?${queryString}` : ''}`;
+  const fullUrl = `${baseURL}${convertToUrl(url, params)}`;
 
   // リクエストヘッダー準備
   const headers: Record<string, string> = {

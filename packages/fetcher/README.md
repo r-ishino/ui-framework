@@ -315,6 +315,137 @@ const error = createFetcherError('Not found', 404);
 throw error;
 ```
 
+## React Hooks
+
+SWRベースのReact Hooksを提供しています。GET専用の`useFetcher`フックで、キャッシュ、自動再検証、エラーハンドリングなどの機能を利用できます。
+
+### `useFetcher` - データ取得用hook
+
+```typescript
+'use client';
+
+import { useFetcher } from '@r-ishino/sample-fetcher';
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+};
+
+function UserProfile({ userId }: { userId: string }) {
+  const { data, error, isLoading, mutate } = useFetcher<User>(
+    `/api/users/${userId}`,
+    null,
+    {
+      fetcherOptions: {
+        baseURL: 'https://api.example.com',
+        credentials: 'include',
+      },
+      errorFallback: (error) => {
+        console.error('Failed to fetch:', error.message);
+      },
+      swrConfig: {
+        revalidateOnFocus: false,
+      },
+    }
+  );
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data) return <div>No data</div>;
+
+  return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.email}</p>
+    </div>
+  );
+}
+```
+
+### POST/PUT/DELETEの実行
+
+ミューテーション（POST/PUT/DELETE）は直接fetcherを使用し、成功後に`mutate()`でキャッシュを更新します。
+
+```typescript
+'use client';
+
+import { useFetcher, postRequest } from '@r-ishino/sample-fetcher';
+import { useState } from 'react';
+
+function CreateUser() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { data: users, mutate } = useFetcher<User[]>('/api/users', {
+    fetcherOptions: { baseURL: 'https://api.example.com' },
+  });
+
+  const handleCreate = async (name: string, email: string) => {
+    setIsSubmitting(true);
+    try {
+      const result = await postRequest<User>(
+        'https://api.example.com/api/users',
+        { name, email }
+      );
+
+      if (result.type === 'success') {
+        await mutate(); // キャッシュを再取得
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // ...
+}
+```
+
+### Next.js App Routerでの初期データ設定
+
+Next.js App Routerでは、Server Componentで取得したデータを`FetcherProvider`でClient Componentに渡せます。
+
+```typescript
+// app/rooms/page.tsx (Server Component)
+import { FetcherProvider } from '@r-ishino/sample-fetcher';
+import { RoomsList } from './RoomsList';
+
+export default async function RoomsPage() {
+  const roomsData = await fetch('https://api.example.com/api/rooms').then(r => r.json());
+
+  return (
+    <FetcherProvider
+      entries={[
+        { url: '/api/rooms', params: null, data: roomsData },
+      ]}
+    >
+      <RoomsList />
+    </FetcherProvider>
+  );
+}
+```
+
+```typescript
+// app/rooms/RoomsList.tsx (Client Component)
+'use client';
+
+import { useFetcher } from '@r-ishino/sample-fetcher';
+
+export function RoomsList() {
+  // FetcherProviderで設定した初期データが自動的に使用される
+  const { data, error, isLoading } = useFetcher<Room[]>('/api/rooms', null);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <ul>
+      {data?.map((room) => <li key={room.id}>{room.name}</li>)}
+    </ul>
+  );
+}
+```
+
+詳細な使用例は、[docs/usage-hooks.md](./docs/usage-hooks.md)を参照してください。
+
 ## Next.jsでの使用例
 
 Next.js App RouterでJWT認証を使用する場合の詳細な例は、[docs/usage-nextjs.md](./docs/usage-nextjs.md)を参照してください。
@@ -358,5 +489,6 @@ MIT
 
 ## リンク
 
+- [React Hooksの使用例](./docs/usage-hooks.md)
 - [Next.jsでの使用例](./docs/usage-nextjs.md)
 - [パッケージ情報](./package.json)

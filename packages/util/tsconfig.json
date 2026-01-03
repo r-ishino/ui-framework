@@ -4,7 +4,8 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "incremental": false,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "lib": ["ES2020", "DOM"]
   },
   "include": ["src/**/*", "package.json"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
