@@ -49,13 +49,8 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        '@linaria/core',
-        '@linaria/react',
-      ],
+      // 相対パス・絶対パス以外（node_modules のパッケージ等）を全て external にする
+      external: /^[^./]/,
       output: {
         format: 'es',
         preserveModules: true,

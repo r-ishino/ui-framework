@@ -1,3 +1,5 @@
+'use client';
+
 import useSWR, { type SWRConfiguration, type KeyedMutator } from 'swr';
 import { createFetcherClient } from '../core/fetcher_client';
 import type { FetcherOptions } from '../core/fetcher';

@@ -22,15 +22,8 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        'next',
-        'next/link',
-        '@r-ishino/sample-ui',
-        '@sample/util',
-      ],
+      // 相対パス・絶対パス以外（node_modules のパッケージ等）を全て external にする
+      external: /^[^./]/,
     },
     sourcemap: true,
   },

@@ -18,6 +18,8 @@
     "noImplicitOverride": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noPropertyAccessFromIndexSignature": true,
 
     "esModuleInterop": true,
     "skipLibCheck": true,
